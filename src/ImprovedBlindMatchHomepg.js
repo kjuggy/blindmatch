@@ -7,13 +7,13 @@ const ThemeContext = createContext();
 const ThemeProvider = ({ children }) => {
   // Check if user has a saved preference, otherwise default to light
   const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('blinddate-theme');
+    const savedTheme = localStorage.getItem('BlindMatch-theme');
     return savedTheme || 'light';
   });
 
   // Update theme in localStorage and document body when it changes
   useEffect(() => {
-    localStorage.setItem('blinddate-theme', theme);
+    localStorage.setItem('BlindMatch-theme', theme);
     document.body.className = theme === 'dark' ? 'dark' : '';
   }, [theme]);
 
@@ -55,7 +55,7 @@ const ThemeToggle = () => {
 };
 
 // Main application component
-const ImprovedBlindDateHomepage = () => {
+const ImprovedBlindMatchHomepage = () => {
   const [email, setEmail] = useState('');
   const { theme } = useTheme();
   
@@ -75,7 +75,7 @@ const ImprovedBlindDateHomepage = () => {
       {/* Navigation - With theme toggle */}
       <nav className={`${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50`}>
         <div className="flex items-center">
-          <span className={`text-2xl font-bold ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>BlindDate</span>
+          <span className={`text-2xl font-bold ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>BlindMatch</span>
         </div>
         <div className="hidden md:flex space-x-8">
           <a href="#how-it-works" className={`${theme === 'dark' ? 'text-gray-300 hover:text-purple-400' : 'text-gray-600 hover:text-purple-600'} font-medium`}>How It Works</a>
@@ -132,7 +132,7 @@ const ImprovedBlindDateHomepage = () => {
       {/* How It Works */}
       <section id="how-it-works" className={theme === 'dark' ? 'py-16 bg-gray-800' : 'py-16 bg-white'}>
         <div className="container mx-auto px-6">
-          <h2 className={`text-3xl font-bold text-center mb-12 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>How BlindDate Works</h2>
+          <h2 className={`text-3xl font-bold text-center mb-12 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>How BlindMatch Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className={`flex flex-col items-center text-center ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} p-6 rounded-lg shadow-md`}>
               <div className={`w-16 h-16 ${theme === 'dark' ? 'bg-purple-900' : 'bg-purple-100'} rounded-full flex items-center justify-center mb-4 shadow-inner`}>
@@ -254,7 +254,7 @@ const ImprovedBlindDateHomepage = () => {
       <section className={theme === 'dark' ? 'py-16 bg-purple-900' : 'py-16 bg-purple-600'}>
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-8 text-white">Ready to Find Your Perfect Match?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white">Join BlindDate today and experience the magic of meaningful connections.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-white">Join BlindMatch today and experience the magic of meaningful connections.</p>
           <button 
             onClick={handleSignUpClick}
             className={`px-8 py-3 ${theme === 'dark' ? 'bg-gray-800 text-purple-300 hover:bg-gray-700' : 'bg-white text-purple-600 hover:bg-purple-50'} font-semibold rounded-lg transition-colors shadow-md`}
@@ -269,13 +269,13 @@ const ImprovedBlindDateHomepage = () => {
         <div className="container mx-auto px-6 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">BlindDate</h3>
+              <h3 className="text-xl font-bold mb-4">BlindMatch</h3>
               <p className="text-gray-400">Creating meaningful connections through carefully curated blind dates.</p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact Us</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>hello@blinddate.com</li>
+                <li>hello@BlindMatch.com</li>
                 <li>1-800-BLIND-DATE</li>
                 <li>123 Match Street, Suite 100</li>
               </ul>
@@ -290,7 +290,7 @@ const ImprovedBlindDateHomepage = () => {
             </div>
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 BlindDate. All rights reserved.</p>
+            <p>&copy; 2025 BlindMatch. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -302,7 +302,7 @@ const ImprovedBlindDateHomepage = () => {
 const App = () => {
   return (
     <ThemeProvider>
-      <ImprovedBlindDateHomepage />
+      <ImprovedBlindMatchHomepage />
     </ThemeProvider>
   );
 };
