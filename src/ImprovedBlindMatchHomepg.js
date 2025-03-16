@@ -59,10 +59,24 @@ const ImprovedBlindMatchHomepage = () => {
   const [email, setEmail] = useState('');
   const { theme } = useTheme();
   
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you for your interest! We'll send updates to ${email}`);
-    setEmail('');
+  
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbwDFcAFh7e_PetNsqLzeIPf9VBNWYsHqowsKWzMR4rSih0qvwQz_a-fwSrkYjjG2BvhTQ/exec", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      alert(`Thank you for your interest! We'll send updates to ${email}`);
+      setEmail('');
+    } catch (error) {
+      console.error("Error submitting email:", error);
+      alert("Oops! Something went wrong. Please try again later.");
+    }
   };
 
   // Google Form redirect
