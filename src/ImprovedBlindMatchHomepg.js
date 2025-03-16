@@ -283,9 +283,9 @@ const ImprovedBlindMatchHomepage = () => {
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">Instagram</a>
-                <a href="#" className="text-gray-400 hover:text-white">Twitter</a>
-                <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
+                <a href="https://instagram.com/blindmatch" className="text-gray-400 hover:text-white">Instagram</a>
+                <a href="https://x.com/blindmatch" className="text-gray-400 hover:text-white">Twitter</a>
+                <a href="https://facebook.com/blindmatch" className="text-gray-400 hover:text-white">Facebook</a>
               </div>
             </div>
           </div>
