@@ -67,7 +67,7 @@ const ImprovedBlindMatchHomepage = () => {
 
   // Google Form redirect
   const handleSignUpClick = () => {
-    window.open('https://forms.google.com/yourformlink', '_blank');
+    window.open('https://docs.google.com/forms/d/1BTAairqmFO3XxtSj2Nr5F-SFkMIoF0A345r9OJE4IcA/edit', '_blank');
   };
 
   return (
