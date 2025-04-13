@@ -8,7 +8,7 @@ const ThemeProvider = ({ children }) => {
   // Check if user has a saved preference, otherwise default to light
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('BlindMatch-theme');
-    return savedTheme || 'light';
+    return savedTheme || 'dark';
   });
 
   // Update theme in localStorage and document body when it changes
@@ -63,12 +63,13 @@ const ImprovedBlindMatchHomepage = () => {
     e.preventDefault();
   
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbwDFcAFh7e_PetNsqLzeIPf9VBNWYsHqowsKWzMR4rSih0qvwQz_a-fwSrkYjjG2BvhTQ/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbyr76A6VAPM1-H4SgsmHmwXOaM8HWOQqrB8cCwzf4hjEppfOx2QM6Lz2wBNJ3ZKzzDerQ/exec", {
         method: "POST",
         body: JSON.stringify({ email }),
         headers: {
           "Content-Type": "application/json",
         },
+        mode: 'no-cors',
       });
   
       alert(`Thank you for your interest! We'll send updates to ${email}`);
@@ -98,50 +99,67 @@ const ImprovedBlindMatchHomepage = () => {
         </div>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
-          <button 
-            onClick={handleSignUpClick}
-            className={`px-4 py-2 rounded ${theme === 'dark' ? 'bg-purple-500 hover:bg-purple-600' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium shadow-sm transition-colors`}
-          >
-            Sign Up Now
-          </button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 py-12 md:py-20">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-              Find Your Perfect Match <span className={theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}>In Person</span>
-            </h1>
-            <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-              Experience the magic of meeting someone special face-to-face. We arrange meaningful blind dates based on your preferences, handling all the details so you can focus on making a connection.
-            </p>
-            <div className="mb-6">
-              <span className={`inline-block ${theme === 'dark' ? 'bg-green-900 text-green-100' : 'bg-green-100 text-green-800'} font-medium px-4 py-2 rounded-full shadow-sm`}>
-                🎉 Now in Beta - Completely Free!
-              </span>
-            </div>
-            <button 
-              onClick={handleSignUpClick}
-              className={`px-6 py-3 ${theme === 'dark' ? 'bg-purple-500 hover:bg-purple-600' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium rounded-lg transition-colors shadow-md`}
-            >
-              Join the Waitlist
-            </button>
-          </div>
-          <div className="md:w-1/2">
-          <div
-            className="rounded-xl overflow-hidden p-6 shadow-lg"
-            style={{ backgroundColor: theme === 'dark' ? '#0F4C81' : '#0F4C81' }}>
-              <img 
-                src="/blindmatchlogo.png"
-                alt="blind match slogan" 
-                className="w-full h-auto max-w-md mx-auto" 
-              />
-            </div>
-          </div>
+<div className="container mx-auto px-6 py-12 md:py-20">
+  <div className="flex flex-col md:flex-row items-center gap-8">
+    <div className="md:w-1/2 w-full mb-8 md:mb-0 order-2">
+      <div
+        className="rounded-xl overflow-hidden p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
+        style={{ backgroundColor: theme === 'dark' ? '#0F4C81' : '#0F4C81' }}>
+          <img 
+            src="/blindmatchlogo.png"
+            alt="blind match slogan" 
+            className="w-full h-auto max-w-md mx-auto" 
+          />
+        </div>
+    </div>
+    {/* Enhanced text section with better hierarchy and spacing */}
+    <div className="md:w-1/2 md:order-1 w-full">
+      <div className="space-y-6">
+        <div>
+          <span className={`inline-block ${theme === 'dark' ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800'} text-sm font-medium px-3 py-1 rounded-full shadow-sm mb-4`}>
+            🎉 Now in Beta - Completely Free!
+          </span>
+        </div>
+        
+        <h1 className={`text-4xl md:text-5xl font-bold leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+          Find Your Perfect Match <br/>
+          <span className={`${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'} italic`}>In Person</span>
+        </h1>
+        
+        {/* <div className="border-l-4 pl-4 border-purple-500 space-y-2">
+          <h3 className={`text-lg font-medium ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
+            Tired of speed dating and swiping marathons?
+          </h3>
+          <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}> 
+            Maybe it's time to slow it down and get back to the basics.
+          </p>
+        </div> */}
+        
+        <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}> 
+          We at <span className={`font-medium ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>BlindMatch</span> believe dating should feel exciting, not exhausting. That’s why we’ve stripped away the profiles, the algorithms, and the pressure—so you can focus on what actually matters: real connection.
+        </p>
+        <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}> 
+        We handpick intimate local venues, and take care of all the planning. All you need to do is arrive with an open mind and let the chemistry unfold.
+          </p>
+        <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} font-medium italic`}> 
+        No profiles, No pressure , Just chemistry✨
+        </p>
+        
+        <div className="pt-2">
+          <button 
+            onClick={handleSignUpClick}
+            className={`px-6 py-3 ${theme === 'dark' ? 'bg-purple-500 hover:bg-purple-600' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium rounded-lg transition-colors shadow-md`}
+          >
+            Get Matched Now
+          </button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
       {/* How It Works */}
       <section id="how-it-works" className={theme === 'dark' ? 'py-16 bg-gray-800' : 'py-16 bg-white'}>
@@ -205,7 +223,7 @@ const ImprovedBlindMatchHomepage = () => {
                 onClick={handleSignUpClick}
                 className={`px-6 py-3 ${theme === 'dark' ? 'bg-purple-500 hover:bg-purple-600' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium rounded-lg transition-colors shadow-md w-full md:w-auto`}
               >
-                Join the Waitlist
+                Sign Up Today
               </button>
             </div>
           </div>
@@ -273,7 +291,7 @@ const ImprovedBlindMatchHomepage = () => {
             onClick={handleSignUpClick}
             className={`px-8 py-3 ${theme === 'dark' ? 'bg-gray-800 text-purple-300 hover:bg-gray-700' : 'bg-white text-purple-600 hover:bg-purple-50'} font-semibold rounded-lg transition-colors shadow-md`}
           >
-            Join Now - It's Free!
+            Join while it's Free!
           </button>
         </div>
       </section>
@@ -284,22 +302,21 @@ const ImprovedBlindMatchHomepage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">BlindMatch</h3>
-              <p className="text-gray-400">Creating meaningful connections through carefully curated blind dates.</p>
+              <p className="text-gray-400">No profiles, No pressure , Just chemistry✨</p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact Us</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>hello@BlindMatch.com</li>
-                <li>1-800-BLIND-DATE</li>
-                <li>123 Match Street, Suite 100</li>
+                <li>blindmatchuk@gmail.com</li>
+                {/* <li>1-800-BLIND-DATE</li> */}
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="https://instagram.com/blindmatch" className="text-gray-400 hover:text-white">Instagram</a>
-                <a href="https://x.com/blindmatch" className="text-gray-400 hover:text-white">Twitter</a>
-                <a href="https://facebook.com/blindmatch" className="text-gray-400 hover:text-white">Facebook</a>
+                <a href="https://instagram.com/blindmatchuk" className="text-gray-400 hover:text-white">Instagram</a>
+                <a href="https://www.tiktok.com/discover/blindmatchuk?lang=en" className="text-gray-400 hover:text-white">Tiktok</a>
+                {/* <a href="https://facebook.com/blindmatch" className="text-gray-400 hover:text-white">Facebook</a> */}
               </div>
             </div>
           </div>
